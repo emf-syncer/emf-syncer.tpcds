@@ -6,7 +6,7 @@ This repository contains pointers to the datasets used for evaluating the perfor
 
 ## Configuration
 
-1. Configure databases: databases generated with the TCP-DS benchmark port (https://github.com/Teradata/tpcds) are available on FigShare with DOI [10.25392/leicester.data.9861650](https://doi.org/10.25392/leicester.data.9861650). Their schemas can be created with the DDL scripts available in [src/main/resources/db](src/main/resources/db/).
+1. Configure databases: databases generated with the TCP-DS benchmark port (https://github.com/Teradata/tpcds) are available on FigShare with DOI [10.25392/leicester.data.9861650](https://doi.org/10.25392/leicester.data.9861650.v1). Their schemas can be created with the DDL scripts available in [src/main/resources/db](src/main/resources/db/).
 2. Generate binaries using the script [generateJars](scripts/generateJars.sh) (update absolute paths)
 3. Run binaries using the script [runJars](scripts/generateJars.sh) (update absolute paths and database credentials)
 
