@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tpcds-emf/src/main/emf-gen" modelPluginID="tpcds-emf"
+    modelName="Tpcds" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>tpcdsModel.ecore</foreignModel>
+  <genPackages prefix="TpcdsModel" basePackage="tpcds" disposableProviderFactory="true"
+      ecorePackage="tpcdsModel.ecore#/">
+    <genDataTypes ecoreDataType="tpcdsModel.ecore#//Date"/>
+    <genDataTypes ecoreDataType="tpcdsModel.ecore#//Time"/>
+    <genClasses ecoreClass="tpcdsModel.ecore#//CallCenter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCallCenterSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCallCenterId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccRecStartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccRecEndDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccClosedDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccOpenDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccEmployees"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccSqFt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccHours"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccMktId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccMktClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccMktDesc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccMarketManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccDivision"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccDivisionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCompany"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCompanyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccStreetNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccStreetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccStreetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccSuiteNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCounty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccZip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccCountry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccGmtOffset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CallCenter/ccTaxPercentage"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//CatalogPage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpCatalogPageSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpCatalogPageId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpStartDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpEndDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpDepartment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpCatalogNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpCatalogPageNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogPage/cpType"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//CatalogReturns">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnedDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnedTimeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crRefundedCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crRefundedCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crRefundedHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crRefundedAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturningCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturningCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturningHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturningAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crCallCenterSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crCatalogPageSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crShipModeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crWarehouseSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReasonSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crOrderNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnQuantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnAmtIncTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crFee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReturnShipCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crRefundedCash"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crReversedCharge"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crStoreCredit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogReturns/crNetLoss"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//CatalogSales">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csSoldDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csSoldTimeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csShipDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csBillCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csBillCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csBillHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csBillAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csShipCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csShipCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csShipHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csShipAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csCallCenterSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csCatalogPageSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csShipModeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csWarehouseSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csPromoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csOrderNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csQuantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csListPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csSalesPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csExtDiscountAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csExtSalesPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csExtWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csExtListPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csExtTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csCouponAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csExtShipCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csNetPaid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csNetPaidIncTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csNetPaidIncShip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csNetPaidIncShipTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CatalogSales/csNetProfit"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cCustomerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cCurrentCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cCurrentHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cCurrentAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cFirstShiptoDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cFirstSalesDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cSalutation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cFirstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cLastName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cPreferredCustFlag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cBirthDay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cBirthMonth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cBirthYear"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cBirthCountry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cLogin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cEmailAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Customer/cLastReviewDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//Customer/storeReturns"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//Customer/storeSales"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//CustomerAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caAddressSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caAddressId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caStreetNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caStreetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caStreetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caSuiteNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caCity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caCounty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caZip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caCountry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caGmtOffset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerAddress/caLocationType"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//CustomerDemographics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdDemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdGender"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdMaritalStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdEducationStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdPurchaseEstimate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdCreditRating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdDepCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdDepEmployedCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//CustomerDemographics/cdDepCollegeCount"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//DateDim">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dDateId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dMonthSeq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dWeekSeq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dQuarterSeq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dYear"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dDow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dMoy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dDom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dQoy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dFyYear"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dFyQuarterSeq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dFyWeekSeq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dDayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dQuarterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dHoliday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dWeekend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dFollowingHoliday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dFirstDom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dLastDom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dSameDayLy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dSameDayLq"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dCurrentDay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dCurrentWeek"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dCurrentMonth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dCurrentQuarter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DateDim/dCurrentYear"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//DbgenVersion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DbgenVersion/dvVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DbgenVersion/dvCreateDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DbgenVersion/dvCreateTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//DbgenVersion/dvCmdlineArgs"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//HouseholdDemographics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//HouseholdDemographics/hdDemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//HouseholdDemographics/hdIncomeBandSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//HouseholdDemographics/hdBuyPotential"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//HouseholdDemographics/hdDepCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//HouseholdDemographics/hdVehicleCount"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//IncomeBand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//IncomeBand/ibIncomeBandSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//IncomeBand/ibLowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//IncomeBand/ibUpperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Inventory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Inventory/invDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Inventory/invItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Inventory/invWarehouseSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Inventory/invQuantityOnHand"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iItemId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iRecStartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iRecEndDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iItemDesc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iCurrentPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iBrandId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iBrand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iClassId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iCategoryId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iManufactId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iManufact"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iFormulation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iUnits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iContainer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iManagerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Item/iProductName"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Promotion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pPromoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pPromoId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pStartDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pEndDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pResponseTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pPromoName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelDmail"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelEmail"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelCatalog"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelTv"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelRadio"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelPress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelEvent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelDemo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pChannelDetails"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pPurpose"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Promotion/pDiscountActive"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Reason">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Reason/rReasonSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Reason/rReasonId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Reason/rReasonDesc"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//ShipMode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//ShipMode/smShipModeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//ShipMode/smShipModeId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//ShipMode/smType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//ShipMode/smCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//ShipMode/smCarrier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//ShipMode/smContract"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Store">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sStoreSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sStoreId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sRecStartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sRecEndDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sClosedDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sStoreName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sNumberEmployees"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sFloorSpace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sHours"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sMarketId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sGeographyClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sMarketDesc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sMarketManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sDivisionId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sDivisionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sCompanyId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sCompanyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sStreetNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sStreetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sStreetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sSuiteNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sCity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sCounty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sZip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sCountry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sGmtOffset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Store/sTaxPrecentage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//Store/storeSales"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//Store/storeReturns"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//StoreReturns">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreReturns/srReturnedDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReturnTimeSk"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreReturns/srId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srTicketNumber"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreReturns/srCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srAddrSk"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreReturns/srStoreSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReasonSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReturnQuantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReturnAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReturnTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReturnAmtIncTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srFee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReturnShipCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srRefundedCash"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srReversedCharge"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srStoreCredit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturns/srNetLoss"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//StoreReturnsId">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturnsId/srItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreReturnsId/srTicketNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//StoreSales">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreSales/ssSoldDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssSoldTimeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssItemSk"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreSales/ssId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreSales/ssCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssTicketNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssAddrSk"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreSales/ssStoreSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssPromoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssQuantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssListPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssSalesPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssExtDiscountAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssExtSalesPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssExtWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssExtListPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssExtTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssCouponAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssNetPaid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssNetPaidIncTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSales/ssNetProfit"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//StoreSalesId">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tpcdsModel.ecore#//StoreSalesId/ssCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//StoreSalesId/ssTicketNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//TimeDim">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tTimeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tTimeId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tHour"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tMinute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tSecond"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tAmPm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tShift"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tSubShift"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//TimeDim/tMealTime"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//Warehouse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wWarehouseSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wWarehouseId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wWarehouseName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wWarehouseSqFt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wStreetNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wStreetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wStreetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wSuiteNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wCity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wCounty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wZip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wCountry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//Warehouse/wGmtOffset"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//WebPage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpWebPageSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpWebPageId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpRecStartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpRecEndDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpCreationDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpAccessDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpAutogenFlag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpUrl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpCharCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpLinkCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpImageCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebPage/wpMaxAdCount"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//WebReturns">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnedDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnedTimeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrRefundedCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrRefundedCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrRefundedHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrRefundedAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturningCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturningCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturningHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturningAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrWebPageSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReasonSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrOrderNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnQuantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnAmtIncTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrFee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReturnShipCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrRefundedCash"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrReversedCharge"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrAccountCredit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebReturns/wrNetLoss"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//WebSales">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsSoldDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsSoldTimeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsShipDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsBillCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsBillCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsBillHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsBillAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsShipCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsShipCdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsShipHdemoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsShipAddrSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsWebPageSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsWebSiteSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsShipModeSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsWarehouseSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsPromoSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsOrderNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsQuantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsListPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsSalesPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsExtDiscountAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsExtSalesPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsExtWholesaleCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsExtListPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsExtTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsCouponAmt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsExtShipCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsNetPaid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsNetPaidIncTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsNetPaidIncShip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsNetPaidIncShipTax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSales/wsNetProfit"/>
+    </genClasses>
+    <genClasses ecoreClass="tpcdsModel.ecore#//WebSite">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webSiteSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webSiteId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webRecStartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webRecEndDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webOpenDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webCloseDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webMktId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webMktClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webMktDesc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webMarketManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webCompanyId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webCompanyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webStreetNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webStreetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webStreetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webSuiteNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webCity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webCounty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webZip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webCountry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webGmtOffset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tpcdsModel.ecore#//WebSite/webTaxPercentage"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

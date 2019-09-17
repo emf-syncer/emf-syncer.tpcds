@@ -1,0 +1,15 @@
+<aspectj>
+    <aspects>
+        <!-- aspect name="eu.ibacz.pbns.util.aspect.TimingAspect"/--> <!--  fails if not found -->
+        <aspect name="javaEcoreSync.GetterAspect"/>
+    </aspects>
+    <weaver options="-verbose -showWeaveInfo"> <!-- add -debug to print every class [not] woven  -->
+        <include within="javaEcoreSync.."/> <!-- Notice the 2 dots to include also subpackages -->
+        <include within="tpcds.tpcdsModel.."/> <!-- Notice the 2 dots to include also subpackages -->
+        <include within="org.eclipse.emf.ecore.."/> <!-- Notice the 2 dots to include also subpackages -->
+        <include within="java.util.."/> <!-- Notice the 2 dots to include also subpackages -->
+    </weaver>    
+    <weaver options="-Xlint:ignore">
+         <include within="org.eclipse.."/>
+     </weaver>
+</aspectj>

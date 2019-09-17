@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="q1" nsURI="http:///tpcds/emf/q1.ecore" nsPrefix="tpcds.emf.q1">
+  <eClassifiers xsi:type="ecore:EClass" name="Customer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cCustomerSk" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cCustomerId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cPreferredCustFlag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storeReturns" upperBound="-1"
+        eType="#//StoreReturns" unsettable="true" eOpposite="#//StoreReturns/srCustomerSk"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DateDim">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dDateSk" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dDateId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dYear" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Store">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sStoreSk" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sStoreId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storeReturns" upperBound="-1"
+        eType="#//StoreReturns" unsettable="true" containment="true" resolveProxies="false"
+        eOpposite="#//StoreReturns/srStoreSk"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StoreReturns">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srReturnedDateSk" eType="#//DateDim"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srId" lowerBound="1" eType="#//StoreReturnsId"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srCustomerSk" eType="#//Customer"
+        unsettable="true" eOpposite="#//Customer/storeReturns"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srStoreSk" eType="#//Store"
+        transient="true" unsettable="true" eOpposite="#//Store/storeReturns"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="srReturnAmt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StoreReturnsId">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="srItemSk" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="srTicketNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"
+        unsettable="true"/>
+  </eClassifiers>
+</ecore:EPackage>

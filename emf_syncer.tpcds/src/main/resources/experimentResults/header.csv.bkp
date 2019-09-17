@@ -1,0 +1,1 @@
+﻿query,factor,iteration,time_sqlQuery,memory_sqlQuery,time_fetching,memory_fetching,time_java1st,memory_java1st,time_java2nd,memory_java2nd,syncer_type,time_syncer,memory_syncer,syncer_size,time_emf1st,memory_emf1st,time_emf2nd,memory_emf2nd,time_emf_ddd,memory_emf_ddd,time_backPropagation,memory_backPropagation

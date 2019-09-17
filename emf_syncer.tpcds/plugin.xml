@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tpcds -->
+      <package
+            uri="http:///tpcds/emfAnnotated.ecore"
+            class="tpcds.tpcdsModel.TpcdsModelPackage"
+            genModel="src/main/resources/ecore/tpcds.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated sm -->
+      <package
+            uri="http:///sm/emf.ecore"
+            class="emf.sm.SmPackage"
+            genModel="src/main/resources/ecore/sm.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated q1 -->
+      <package
+            uri="http:///tpcds/emf/q1.ecore"
+            class="tpcds.gen.q1.Q1Package"
+            genModel="src/main/resources/ecore/q1.genmodel"/>
+   </extension>
+
+</plugin>

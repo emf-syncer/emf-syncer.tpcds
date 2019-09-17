@@ -1,0 +1,277 @@
+import java.io.File
+
+buildscript {
+	ext {
+		springBootVersion = '2.1.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.springframework:springloaded:1.2.8.RELEASE")
+	}
+}
+
+plugins {
+    id "org.xtext.builder" version "2.0.4" // 24-01-2018
+	id "org.xtext.xtend" version "2.0.4" // 24-01-2018
+}
+
+group 'arturboronat'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'maven-publish'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.11
+
+application {
+//	if (project.hasProperty("mainClassName")) {
+//		mainClassName = project.property("mainClassName")
+//	else
+	mainClassName = 'tpcds.Driver'
+		
+		
+	applicationDefaultJvmArgs = [
+		'-Xmx12G', 
+		'-XX:+UseG1GC', // '-XX:+UseConcMarkSweepGC',
+		'-Dfactor=00_0625',
+		'-Diterations=1',
+		'-Ddir=/Users/ab373/Documents/ArturData/WORK/git/javaecoresync/tpcds-emf/src/main/resources/experimentResults/results',
+		'-Dname=queries',
+		'-DdbConfig.username=aboronat_tpcds',
+		'-DdbConfig.password=aboronat_tpcds',
+		'-DdbConfig.host=127.0.0.1',
+		'-DdbConfig.port=3306',
+		'-DdbConfig.name=00_0625'
+	]
+//	if (project.hasProperty("factor")) {
+//		applicationDefaultJvmArgs << "-Dfactor=${factor}"
+//	}
+		
+}
+
+eclipse {
+	project {
+	  name = 'emf_syncer.tpcdsf'
+	  buildCommand 'org.eclipse.jdt.core.javabuilder'
+	  buildCommand 'org.eclipse.ajdt.core.ajbuilder'
+	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+	  buildCommand 'org.eclipse.wst.common.project.facet.core.builder'
+	  // aspectJ
+	  buildCommand 'org.eclipse.ajdt.core.ajbuilder'
+	  // xcore,xtext
+	  buildCommand 'org.eclipse.xtext.ui.shared.xtextBuilder'
+	  buildCommand 'org.eclipse.pde.ManifestBuilder'
+	  buildCommand 'org.eclipse.pde.SchemaBuilder'
+
+	  natures 'org.eclipse.jdt.core.javanature',
+	  	'org.eclipse.ajdt.ui.ajnature',
+		  'org.eclipse.buildship.core.gradleprojectnature',
+		  'org.eclipse.wst.common.project.facet.core.nature',
+		  'org.eclipse.xtext.ui.shared.xtextNature',
+		  'org.eclipse.pde.PluginNature'
+	}
+}
+
+
+repositories {
+	maven {
+		url "https://github.com/yamtl/yamtl.github.io/raw/mvn-repo/mvn-repo/snapshot-repo"
+	}
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+
+ext {
+    gradleVer = '5.3.1'
+    xtendVersion = '2.18.0'
+    guavaVersion =  '24.0-jre' 
+	aspectJVersion = '1.9.4'
+}
+
+// MAVEN PUBLISHING
+publishing {
+	publications {
+	  mavenJava(MavenPublication) {
+		from components.java
+	  }
+	}
+  
+	repositories {
+	  mavenLocal()
+	}
+}
+
+// to test before publishing jar in maven
+jar.dependsOn test
+
+
+// XTEND: configures output directories for generated java
+xtend {
+	sourceSets {
+		main.xtendOutputDir = 'src/main/xtend-gen'
+		test.xtendOutputDir = 'src/test/xtend-gen'
+	}
+}
+
+// XCORE CONFIGURATION
+sourceSets {
+	main {
+		java {
+			srcDirs = [
+				'src/main/java',
+				'src/main/emf-gen',
+				'src/main/xtend-gen'
+			]
+		}
+	}
+	test {
+		java {
+			srcDir 'src/test/xtend-gen'
+		}
+	}
+}
+
+
+// ASPECTJ
+configurations {
+	ajc
+	aspects
+	aspectCompile
+	ajInpath
+	compile {
+		extendsFrom aspects
+	}
+}
+
+
+//def dbConfigParameters(factor) {
+//	def factorString = ''
+//	switch (factor) {
+//		case '0.0625': factorString = '00_0625'; break
+//		case '0.125': factorString = '00_125'; break
+//		case '0.25': factorString = '00_25'; break
+//		case '0.5': factorString = '00_5'; break
+//		case '1': factorString = ''; break
+//		case '2': factorString = '02'; break
+//		case '4': factorString = '04'; break
+//		case '8': factorString = '08'; break
+//		case '16': factorString = '16'; break
+//	}	
+//	
+//return """
+//host = 127.0.0.1
+//port = 3306
+//username = aboronat_tpcds
+//password = aboronat_tpcds
+//factor = 00_0625
+//"""
+//}
+
+compileJava {
+	
+//	if (project.hasProperty("factor")) {
+//		doFirst{
+//			def dbConfigFile = new File('./src/main/resources/mysql.tpcds.properties')
+//			dbConfigFile.newWriter().withWriter { w ->
+//				w << dbConfigParameters(project.property("factor"))
+//			}
+//		}
+//	}
+	
+	if (project.hasProperty("withAspect")) {
+		doLast{
+		  ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath )
+		  ant.iajc(
+			  source:"11",
+			  target:"11",
+			  destDir: sourceSets.main.output.classesDirs[0].absolutePath,
+			  inpath: configurations.ajInpath.asPath,
+			  maxmem: "512m",
+			  fork: "true",
+			  aspectPath:configurations.aspects.asPath,
+			  sourceRootCopyFilter:"**/.git/*,**/*.java",
+			  classpath:"${configurations.compile.asPath};${configurations.aspectCompile.asPath}"){
+			  sourceroots{
+				  sourceSets.main.java.srcDirs.each{
+					  pathelement(location:it.absolutePath)
+				  }
+			  }
+		  }
+		}
+	} 
+	
+}
+
+dependencies {
+	compile "yamtl:emf-syncer:0.0.1-SNAPSHOT"
+	
+	// EMF
+	compile 'org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.15.0'
+	compile 'org.eclipse.emf:org.eclipse.emf.ecore.change:2.11+'
+	
+	// guava: Files
+	compile "com.google.guava:guava:$guavaVersion" 
+				
+	// xtend
+	compile "org.eclipse.xtend:org.eclipse.xtend.lib:$xtendVersion" // 2.11+
+	compile "org.eclipse.xtext:org.eclipse.xtext.ecore:$xtendVersion" // 2.11+
+	
+	// Spring Boot
+	compile("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
+	
+	// persistence
+	compile("javax.xml.bind:jaxb-api:2.3.0") // https://stackoverflow.com/a/48987120
+	// https://www.baeldung.com/spring-boot-hikari
+	compile group: 'com.zaxxer', name: 'HikariCP', version: '3.3.1' // much faster than the default JDBC connection
+	compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}") {
+		exclude group: "org.apache.tomcat", module: "tomcat-jdbc"
+	}
+	//runtime("mysql:mysql-connector-java:8.0.16")
+	runtime('org.mariadb.jdbc:mariadb-java-client:2.4.1')
+	
+
+	// opencsv
+	compile "com.opencsv:opencsv:4.5"
+	
+	
+	// for parsing args in main
+	compile 'commons-cli:commons-cli:1.4'
+	
+	
+	// AspectJ
+	ajc "org.aspectj:aspectjtools:${aspectJVersion}"
+	compile("org.aspectj:aspectjrt:${aspectJVersion}")
+	compile("org.aspectj:aspectjweaver:${aspectJVersion}")
+	ajInpath "org.eclipse.emf:org.eclipse.emf.ecore:2.15.0"
+//	needed for getter aspect when using collections
+	ajInpath "yamtl:emf-syncer:0.0.1-SNAPSHOT"
+	ajInpath "org.eclipse.core:org.eclipse.core.resources:3.7.100"
+	ajInpath 'org.osgi:org.osgi.service.event:1.4.0'
+	ajInpath 'org.eclipse.core:org.eclipse.core.runtime:3.7.0'
+	ajInpath 'org.eclipse.core.runtime.compatibility:auth:3.2.100-v20070502'
+	
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+	testCompile 'org.springframework.boot:spring-boot-starter-test:2.1.4.RELEASE'
+}
+
+// use bootJar
+task fatJar(type: Jar) {
+	manifest {
+		attributes 'Driver': 'EMFSyncer benchmark',
+			'Implementation-Version': version,
+			'Main-Class': 'tpcds.Driver'
+	}
+	// remove signatures as we are not signing this jar to avoid security warnings
+	exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+	baseName = project.name + '-all'
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+	with jar
+}

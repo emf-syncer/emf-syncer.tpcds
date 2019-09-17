@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tpcds-emf/src/main/emf-gen" modelPluginID="tpcds-emf"
+    modelName="Q1" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.java" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>@model</foreignModel>
+  <genPackages prefix="Q1" basePackage="tpcds.gen" disposableProviderFactory="true"
+      ecorePackage="q1.ecore#/">
+    <genClasses ecoreClass="q1.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//Customer/cCustomerSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//Customer/cCustomerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//Customer/cPreferredCustFlag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference q1.ecore#//Customer/storeReturns"/>
+    </genClasses>
+    <genClasses ecoreClass="q1.ecore#//DateDim">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//DateDim/dDateSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//DateDim/dDateId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//DateDim/dYear"/>
+    </genClasses>
+    <genClasses ecoreClass="q1.ecore#//Store">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//Store/sStoreSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//Store/sStoreId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//Store/sState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference q1.ecore#//Store/storeReturns"/>
+    </genClasses>
+    <genClasses ecoreClass="q1.ecore#//StoreReturns">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference q1.ecore#//StoreReturns/srReturnedDateSk"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference q1.ecore#//StoreReturns/srId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference q1.ecore#//StoreReturns/srCustomerSk"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference q1.ecore#//StoreReturns/srStoreSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//StoreReturns/srReturnAmt"/>
+    </genClasses>
+    <genClasses ecoreClass="q1.ecore#//StoreReturnsId">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//StoreReturnsId/srItemSk"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute q1.ecore#//StoreReturnsId/srTicketNumber"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
