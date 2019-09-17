@@ -56,7 +56,7 @@ application {
 
 eclipse {
 	project {
-	  name = 'emf_syncer.tpcdsf'
+	  name = 'emf_syncer.tpcds'
 	  buildCommand 'org.eclipse.jdt.core.javabuilder'
 	  buildCommand 'org.eclipse.ajdt.core.ajbuilder'
 	  buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
