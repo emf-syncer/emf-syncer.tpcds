@@ -11,14 +11,14 @@ This repository contains pointers to the datasets used for evaluating the perfor
 3. Run binaries using the script [runJars](scripts/generateJars.sh) (update absolute paths and database credentials)
 
 
-### Queries
+## Queries
 
 * SQL: [src/main/java/tpcds/TCPDSQueries_java](src/main/java/tpcds/TCPDSQueries_SQL.xtend)
 * Java: [src/main/java/tpcds/TCPDSQueries_java](src/main/java/tpcds/TCPDSQueries_java.xtend)
 * EMF: [src/main/java/tpcds/TCPDSQueries_java](src/main/java/tpcds/TCPDSQueries_emf.xtend)
 
 
-### Results
+## Results
 
 Raw experimental results are available in the folder [src/main/resources/experimentalResults/results]. 
 
