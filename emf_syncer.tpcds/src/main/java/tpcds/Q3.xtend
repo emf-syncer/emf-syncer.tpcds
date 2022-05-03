@@ -1,73 +1,44 @@
 package tpcds;
 
-import com.opencsv.bean.StatefulBeanToCsvBuilder
-import java.io.FileWriter
-import java.io.Writer
-import java.text.DecimalFormat
-import java.text.NumberFormat
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.List
-import java.util.Locale
 import emf_syncer.DAOResolver_JPA_TCPDS
-import emf_syncer.Syncer
-import emf_syncer.Syncer.SyncingStrategy
-import javax.persistence.EntityManager
-import javax.persistence.criteria.CriteriaBuilder
-import javax.persistence.criteria.CriteriaQuery
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import tpcds.domain.lazy.DateDim
-import tpcds.domain.lazy.Store
-import tpcds.domain.lazy.StoreReturns
+import emf_syncer.EMFSyncer
+import emf_syncer.EMFSyncer.SyncingStrategy
+import java.util.List
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 import tpcds.gen.q1.Customer
-import tpcds.gen.q1.Q1Factory
 import tpcds.gen.q1.Q1Package
+import tpcds.repository.StoreReturnsRepository
 import util.QueryStats
 
 import static extension util.Stats.*
 
+@Component
 class Q3 {
 
-    EntityManager em;
- 
- 	var String factor
  	var debug = false
- 	var iterations = 1
- 	var check_correctness = true 
- 	var syncing_strategy = SyncingStrategy.LAZY 
- 	var int size_model
 	
 	val PACKAGE = Q1Package.eINSTANCE
-	val FACTORY = Q1Factory.eINSTANCE
 	
-    val Logger LOG = LoggerFactory.getLogger(Driver);
+	@Autowired
+ 	TPCDSQueries_sql queriesSQL
+ 	@Autowired
+ 	TPCDSQueries_java queriesJava
+ 	@Autowired
+ 	TPCDSQueries_emf queriesEMF
  	
-	new(EntityManager em, String factor, int size_model, boolean debug, int iterations, boolean check_correctness, SyncingStrategy syncing_strategy) {
-		this.em = em
-		this.factor = factor
-		this.debug = debug
-		this.iterations = iterations
-		this.check_correctness = check_correctness
-		this.syncing_strategy = syncing_strategy
-		this.size_model = size_model
-	}
-  
-  
-    def void runExperiments(List<QueryStats> queryStatsList) {
+	@Autowired
+	StoreReturnsRepository srRepo
+	
+    def void runExperiments(String factor_, int size_model, boolean debug, int iterations, boolean check_correctness, SyncingStrategy syncing_strategy, List<QueryStats> queryStatsList) {
+    	var factor = factor_
     	
-    	var TCPDSQueries_emf emfQueries
     	var long time
     	var long memory 
     	
-
-
-    	
     	for (var i=0; i<iterations; i++) {
-    		if (i % 10 == 0) println('''iteration «i»''')
-    		
-    		
-    		
+    		if (i<10) println('''Q3 iteration «i»''')
+    		else if (i % 10 == 0) println('''Q3 iteration «i»''')
     		
     		val queryStats = new QueryStats
     		queryStats.query = 'Q3'
@@ -78,10 +49,9 @@ class Q3 {
 	    	var List<tpcds.domain.lazy.Customer> customerJavaList
 	    	var List<Customer> customerEmfList
 			
-			val queriesSQL = new TCPDSQueries_sql(em)
 			val sqlCustomerIdList = queriesSQL.query3()
-			queryStats.time_sqlQuery = queriesSQL.computingTime.toMillis
-			queryStats.memory_sqlQuery = queriesSQL.computingMemory.toMBs
+			queryStats.time_sqlQuery = queriesSQL.computingTime
+			queryStats.memory_sqlQuery = queriesSQL.computingMemory
 			if (debug) {
 				println()				
 				println ('''Q3 SQL (ms): «queryStats.time_sqlQuery»''')
@@ -89,52 +59,31 @@ class Q3 {
 			}
 	        
 	        
-	        
-	        
-	        
-	        
-	        
-	        
 	        /*
 			 * DO FETCHING ONCE as for big databases it can be very slow
 			 */
 	        time = System.nanoTime()
 	        memory = peekMemoryUsage()
-	    	val stList = em.createQuery(
-				'''SELECT sr FROM StoreReturns sr 
-				LEFT JOIN FETCH sr.srReturnedDateSk
-				LEFT JOIN FETCH sr.srCustomerSk
-				LEFT JOIN FETCH sr.srStoreSk
-				''', StoreReturns).getResultList()
+	    	val stList = srRepo.findStoreReturnsWithFetch()
 			
-			queryStats.time_fetching = since(time).toMillis
-			queryStats.memory_fetching = memorySince(memory).toMBs
+			queryStats.time_fetching = since(time)
+			queryStats.memory_fetching = memorySince(memory)
 			if (debug) {
 				println()			
 				println('''Q1 ORM fetching time (ms): «queryStats.time_fetching»''')
 				println('''Q1 ORM fetching size: «stList.size»''')
 			}
 	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
 			val daoResolver = new DAOResolver_JPA_TCPDS
-	
-	
-	
-			var javaQueries = new TCPDSQueries_java(daoResolver)    
+			queriesJava.setDaoResolver(daoResolver)
 			if (check_correctness) {	
-		    	customerJavaList = javaQueries.query3(stList, sqlCustomerIdList) // checks for correctness
-		    	queryStats.correct_java1st = javaQueries.correct
+		    	customerJavaList = queriesJava.query3(stList, sqlCustomerIdList) // checks for correctness
+		    	queryStats.correct_java1st = queriesJava.correct
 		    } else
-	    		customerJavaList = javaQueries.query3(stList) 
+	    		customerJavaList = queriesJava.query3(stList) 
 			
-			queryStats.time_java1st = javaQueries.computingTime.toMillis
-			queryStats.memory_java1st = javaQueries.computingMemory.toMBs
+			queryStats.time_java1st = queriesJava.computingTime
+			queryStats.memory_java1st = queriesJava.computingMemory
 			if (debug) {
 				println()				
 				println('''Q3 Java (ms): «queryStats.time_java1st»''')
@@ -142,15 +91,14 @@ class Q3 {
 			}
 			
 	
-			javaQueries = new TCPDSQueries_java(daoResolver)    
 			if (check_correctness) {
-		    	customerJavaList = javaQueries.query3(stList, sqlCustomerIdList) // checks for correctness
-				queryStats.correct_java2nd = javaQueries.correct		    	
+		    	customerJavaList = queriesJava.query3(stList, sqlCustomerIdList) // checks for correctness
+				queryStats.correct_java2nd = queriesJava.correct		    	
 		    } else
-	    		customerJavaList = javaQueries.query3(stList) 
+	    		customerJavaList = queriesJava.query3(stList) 
 			
-			queryStats.time_java2nd = javaQueries.computingTime.toMillis
-			queryStats.memory_java2nd = javaQueries.computingMemory.toMBs
+			queryStats.time_java2nd = queriesJava.computingTime
+			queryStats.memory_java2nd = queriesJava.computingMemory
 			if (debug) {
 				println()				
 				println('''Q3 Java 2nd time (ms): «queryStats.time_java2nd»''')
@@ -158,10 +106,8 @@ class Q3 {
 			}
 			
 			
-			
-			
 			// without DAO resolver we get duplicate objects
-			val syncer = new Syncer(PACKAGE, size_model, daoResolver, #['tpcds.domain.lazy'])
+			val syncer = new EMFSyncer(#['tpcds.domain.lazy'], PACKAGE, size_model, daoResolver)
 			
 			
 	    	if (syncing_strategy == SyncingStrategy.EAGER) 
@@ -169,15 +115,13 @@ class Q3 {
 			
 			time = System.nanoTime()
 			memory = peekMemoryUsage()
-	    	val stListEmf = syncer.initialSync(stList) 
-	    	queryStats.time_syncer = since(time).toMillis
-	    	queryStats.memory_syncer = memorySince(memory).toMBs
+	    	val stListEmf = syncer.forwardSync(stList) 
+	    	queryStats.time_syncer = since(time)
+	    	queryStats.memory_syncer = memorySince(memory)
 	    	if (debug) {
 				println()	    		
 				println('''Q3 Initial syncing time (ms): «queryStats.time_syncer»''')
 			}
-			
-			
 			
 			
 			/*
@@ -185,14 +129,14 @@ class Q3 {
 			 */
 			
 			// objects have been full loaded, the DAO resolver is only needed for syncing
-			emfQueries = new TCPDSQueries_emf()
+			queriesEMF = new TPCDSQueries_emf()
 			if (check_correctness) {
-	    		customerEmfList = emfQueries.query3(stListEmf, sqlCustomerIdList) // checks for correctness
-	    		queryStats.correct_emf1st = emfQueries.correct
+	    		customerEmfList = queriesEMF.query3(stListEmf, sqlCustomerIdList) // checks for correctness
+	    		queryStats.correct_emf1st = queriesEMF.correct
 	    	} else
-	    		customerEmfList = emfQueries.query3(stListEmf)
-	    	queryStats.time_emf1st = emfQueries.computingTime.toMillis
-	    	queryStats.memory_emf1st = emfQueries.computingMemory.toMBs
+	    		customerEmfList = queriesEMF.query3(stListEmf)
+	    	queryStats.time_emf1st = queriesEMF.computingTime
+	    	queryStats.memory_emf1st = queriesEMF.computingMemory
 	    	// objects used in queries are now loaded in the map
 	    	queryStats.size_syncer = syncer.javaToEmfMap.keySet.size 
 	    	if (debug) {
@@ -202,22 +146,16 @@ class Q3 {
 				println ('''Q3 EMF result set size: «customerEmfList.toSet.size()»''')
 			}
 			
-			
-			
-			
 			if (debug) println(syncer.stats)
 			
-			
-			
 			// objects have been full loaded, the DAO resolver is only needed for syncing
-			emfQueries = new TCPDSQueries_emf()
 	    	if (check_correctness) {
-	    		customerEmfList = emfQueries.query3(stListEmf, sqlCustomerIdList) // checks for correctness
-	    		queryStats.correct_emf2nd = emfQueries.correct
+	    		customerEmfList = queriesEMF.query3(stListEmf, sqlCustomerIdList) // checks for correctness
+	    		queryStats.correct_emf2nd = queriesEMF.correct
 	    	} else
-	    		customerEmfList = emfQueries.query3(stListEmf)
-	    	queryStats.time_emf2nd = emfQueries.computingTime.toMillis
-	    	queryStats.memory_emf2nd = emfQueries.computingMemory.toMBs
+	    		customerEmfList = queriesEMF.query3(stListEmf)
+	    	queryStats.time_emf2nd = queriesEMF.computingTime
+	    	queryStats.memory_emf2nd = queriesEMF.computingMemory
 	    	if (debug) { 
 				println()	    		
 				println('''Q3 EMF 2nd (ms): «queryStats.time_emf2nd»''')
@@ -243,8 +181,8 @@ class Q3 {
 			
 			
 			
-			queryStats.time_update = since(time).toMillis
-			queryStats.memory_update = memorySince(memory).toMillis
+			queryStats.time_update = since(time)
+			queryStats.memory_update = memorySince(memory)
 			
 			/* 
 			 * UPDATE 2 with lazy synced feature values resolved already
@@ -259,12 +197,12 @@ class Q3 {
 					]
 				]
 			)
-			queryStats.time_update2 = since(time).toMillis
-			queryStats.memory_update2 = memorySince(memory).toMillis
+			queryStats.time_update2 = since(time)
+			queryStats.memory_update2 = memorySince(memory)
 			
 
 			if (this.debug) {
-				println('UPDATED: ' + syncer.emfToJavaSyncer.dirtyFeatures.values.map[size].reduce[a,b|a+b])
+				println('UPDATED: ' + syncer.dirtyFeatureCardinality)
 			}
 
 			/*
@@ -272,19 +210,15 @@ class Q3 {
 			 */
 			time = System.nanoTime()
 			memory = peekMemoryUsage
-			syncer.incrementalEmfToJavaSync()
-			queryStats.time_backPropagation = since(time).toMillis
-			queryStats.memory_backPropagation = memorySince(memory).toMillis
-			val val1 = syncer
-	    			.emfToJavaSyncer
-	    			.dirtyFeatures
-	    			.values
-	    			.map[size]
-	    			.reduce[a,b|a+b]
-	    	val val2 = syncer
-	    			.emfToJavaSyncer
-	    			.dirtyRootObjects
-	    			.size
+			syncer.backSync()
+			queryStats.time_backPropagation = since(time)
+			queryStats.memory_backPropagation = memorySince(memory)
+			var val1 = 0
+			if (!syncer.noDirtyFeatures) 
+			{
+				val1 = syncer.dirtyFeatureCardinality
+	    	}
+	    	var val2 = syncer.dirtyRootObjectCardinality
 	    	queryStats.size_backPropagation = 
 	    		(val1 + val2) as long
 			
@@ -296,19 +230,7 @@ class Q3 {
 						queryStats.correct_backPropagation = false
 				}
 			}
-			
-			
-	
-	
 			queryStatsList.add(queryStats)
 		}
-
-
-
     }
-    
-    
-    
-    
-    
 }

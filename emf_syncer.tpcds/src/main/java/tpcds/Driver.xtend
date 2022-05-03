@@ -1,14 +1,10 @@
 package tpcds;
 
 import com.opencsv.bean.StatefulBeanToCsvBuilder
+import emf_syncer.EMFSyncer.SyncingStrategy
 import java.io.FileWriter
 import java.io.Writer
 import java.util.List
-import emf_syncer.Syncer.SyncingStrategy
-import javax.persistence.EntityManager
-import javax.persistence.PersistenceContext
-import javax.persistence.criteria.CriteriaBuilder
-import javax.persistence.criteria.CriteriaQuery
 import org.apache.commons.cli.CommandLine
 import org.apache.commons.cli.CommandLineParser
 import org.apache.commons.cli.DefaultParser
@@ -18,14 +14,15 @@ import org.apache.commons.cli.Options
 import org.apache.commons.cli.ParseException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import tpcds.domain.lazy.Customer
-import tpcds.domain.lazy.DateDim
-import tpcds.domain.lazy.Store
-import tpcds.domain.lazy.StoreReturns
+import tpcds.repository.DateDimRepository
+import tpcds.repository.StoreRepository
+import tpcds.repository.StoreReturnsRepository
 import util.QueryStats
+import tpcds.repository.CustomerRepository
 
 @SpringBootApplication
 class Driver implements CommandLineRunner {
@@ -47,49 +44,36 @@ class Driver implements CommandLineRunner {
  	var SYNCING_STRATEGY = SyncingStrategy.LAZY 
  	var WITH_REFERENCE_MAPPER = true 
     
-    var csvDir = '/Users/ab373/Documents/ArturData/WORK/git/javaecoresync/tpcds-emf/src/main/resources/experimentResults/'
+    var csvDir = 'experimentResults/'
     var csvBaseName = 'file'
  
+ 	var dbName = ''
  
-	@PersistenceContext
-    EntityManager em;
-	
     val static Logger LOG = LoggerFactory.getLogger(Driver);
  	
- 	
+ 	@Autowired
+    var StoreReturnsRepository srRepo;
+ 	@Autowired
+    var CustomerRepository cRepo;
+ 	@Autowired
+    var DateDimRepository dateRepo;
+ 	@Autowired
+    var StoreRepository storeRepo;
+    
+    @Autowired
+    Q1 q1
+    @Autowired
+    Q2 q2
+    @Autowired
+    Q3 q3
+    @Autowired
+    DriverReferenceMapper referenceMapper
  	
     def static void main(String[] args) {
         LOG.info("STARTING THE APPLICATION");
         SpringApplication.run(Driver, args);
         LOG.info("APPLICATION FINISHED");
     }
-  
-  
-    def static count(EntityManager em, Class<?> type) {
-  		val CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-		val CriteriaQuery<Long> countQuery = criteriaBuilder.createQuery(Long);
-		countQuery.select(criteriaBuilder.count(countQuery.from(type)));
-		val Long count = em.createQuery(countQuery).getSingleResult();
-		count
-  	}
-  
-//  	def static List<StoreReturns> runSqlQuery(EntityManager em, Class<?> type, int page_size, String sqlQuery) {
-//  		val Long count = em.count(StoreReturns);
-//		val  maxPageNumber = ((count / page_size) + 1) as int
-//		var List<StoreReturns> intermediateResultList = newArrayList
-//		for (var int pageNumber = 1; pageNumber <= maxPageNumber; pageNumber++) {
-//			
-//			val list = em.createQuery(sqlQuery, StoreReturns)
-//				.setFirstResult((pageNumber-1) * page_size)
-//				.setMaxResults(page_size)
-//				.getResultList()
-//				
-//			intermediateResultList += list
-//		} 
-//		return intermediateResultList
-//  	}
-  
-  
   
   	def parseArgs(String... args) {
   		val Options options = new Options();
@@ -170,42 +154,33 @@ class Driver implements CommandLineRunner {
  		WITH_REFERENCE_MAPPER = cmd.hasOption("mapper")
     	csvDir = cmd.getOptionValue("dir")
     	csvBaseName = cmd.getOptionValue("name")
- 
+ 		dbName = cmd.getOptionValue("dbn")
 
-
-
-    	
     	val List<QueryStats> queryStatsList = newArrayList
 		var queryStats = new QueryStats
 		queryStatsList.add(queryStats)
 		
     	val size_model = 
 			(
-				count(em, StoreReturns) +  
-				count(em, Customer) + 
-				count(em, DateDim) + 
-				count(em, Store)
+				srRepo.count() +  
+				cRepo.count() + 
+				dateRepo.count() + 
+				storeRepo.count()
 			) as int 
     	queryStats.size_model = size_model / 2 as int // there are DateDim and Store records that are not relevant
 		
 		
-		
-		
 		if (WITH_REFERENCE_MAPPER) {
 			
-			val referenceMapper = new DriverReferenceMapper(em, FACTOR, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY)
-			referenceMapper.runExperiments(queryStatsList)
+			referenceMapper.runExperiments(FACTOR, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY, queryStatsList)
 
 		} else {
 			
-	    	val q1 = new Q1(em, FACTOR, size_model, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY)
-			q1.runExperiments(queryStatsList)
+			q1.runExperiments(FACTOR, size_model, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY, queryStatsList)
 			
-	    	val q2 = new Q2(em, FACTOR, size_model, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY)
-	    	q2.runExperiments(queryStatsList)
+	    	q2.runExperiments(FACTOR, size_model, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY, queryStatsList)
 	    	
-	    	val q3 = new Q3(em, FACTOR, size_model, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY)
-	    	q3.runExperiments(queryStatsList)
+	    	q3.runExperiments(FACTOR, size_model, DEBUG, ITERATIONS, CHECK_CORRECTNESS, SYNCING_STRATEGY, queryStatsList)
 		
 		}	    	
 
@@ -214,25 +189,11 @@ class Driver implements CommandLineRunner {
 
 
     	// STORE STATS
-//    	val String pattern = "yyyyMMdd_HHmm";
-//		val simpleDateFormat = new SimpleDateFormat(pattern);
-//		val String date = simpleDateFormat.format(new Date());
-		
-		
-//		val NumberFormat nf = DecimalFormat.getInstance(Locale.ENGLISH);
-// 		val DecimalFormat decimalFormatter = nf as DecimalFormat;
-// 		decimalFormatter.applyPattern("00.0000");
-// 		val String fString = decimalFormatter.format(FACTOR);
-		
-		
-		// create directory
-//		new File('''«csvDir»/«date»''').mkdir
-		
 		var newFilePath = ''
 		if (SYNCING_STRATEGY == SyncingStrategy.EAGER) 
-			newFilePath = '''«csvDir»/«csvBaseName»_eager_«FACTOR».csv'''
+			newFilePath = '''«csvDir»/«csvBaseName»_eager_«dbName».csv'''
 		else
-			newFilePath = '''«csvDir»/«csvBaseName»_«FACTOR».csv'''
+			newFilePath = '''«csvDir»/«csvBaseName»_«dbName».csv'''
     	println(newFilePath)
 
 		val Writer writer = new FileWriter(newFilePath);

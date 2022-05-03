@@ -1,63 +1,37 @@
 package tpcds;
 
+import emf_syncer.EMFSyncer.SyncingStrategy
 import java.util.List
-import tpcds.ReferenceTrafo
-import emf_syncer.Syncer.SyncingStrategy
-import javax.persistence.EntityManager
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import tpcds.domain.lazy.StoreReturns
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 import tpcds.gen.q1.Customer
-import tpcds.gen.q1.Q1Factory
-import tpcds.gen.q1.Q1Package
+import tpcds.repository.StoreReturnsRepository
 import util.QueryStats
 
 import static extension util.Stats.*
 
+@Component
 class DriverReferenceMapper {
+ 	var DEBUG = false
 
-    EntityManager em;
- 
- 	var String factor
- 	var debug = false
- 	var iterations = 1
- 	var check_correctness = true 
- 	var syncing_strategy = SyncingStrategy.LAZY 
-// 	var csvFilePath = ''
-// 	var List<StoreReturns> stList
- 
+ 	@Autowired
+ 	TPCDSQueries_sql queriesSQL
+ 	@Autowired
+ 	TPCDSQueries_emf queriesEMF
 	
-	val PACKAGE = Q1Package.eINSTANCE
-	val FACTORY = Q1Factory.eINSTANCE
+	@Autowired
+	StoreReturnsRepository srRepo
 	
-    val Logger LOG = LoggerFactory.getLogger(Driver);
- 	
-	new(EntityManager em, String factor, boolean debug, int iterations, boolean check_correctness, SyncingStrategy syncing_strategy) {
-		this.em = em
-		this.factor = factor
-		this.debug = debug
-		this.iterations = iterations
-		this.check_correctness = check_correctness
-		this.syncing_strategy = syncing_strategy
-//		this.csvFilePath = csvFilePath
-//		this.stList = stList as List<StoreReturns>
-	}
   
-  
-    def void runExperiments(List<QueryStats> queryStatsList) {
-    	
-    	var TCPDSQueries_emf emfQueries
+    def void runExperiments(String factor_, boolean debug, int iterations, boolean check_correctness, SyncingStrategy syncing_strategy, List<QueryStats> queryStatsList) {
+    	var factor = factor_
     	var long time
     	var long memory 
     	
-
-
-    	
     	for (var i=0; i<iterations; i++) {
     		if (i % 10 == 0) println('''iteration «i»''')
-    		
-    		
-    		
     		
     		val queryStats = new QueryStats
     		queryStats.query = 'REFERENCE_MAPPER'
@@ -65,16 +39,12 @@ class DriverReferenceMapper {
     		queryStats.factor = if ((factor===null) || (factor=='')) factor='01' 
     		queryStats.syncer_type = syncing_strategy.toString()
 	    	
-	    	var List<tpcds.domain.lazy.Customer> customerJavaList
 	    	var List<Customer> customerEmfList
 			
-			
-			
-			
-			val queriesSQL = new TCPDSQueries_sql(em)
+			//val queriesSQL = new TPCDSQueries_sql()
 			val sqlCustomerIdList = queriesSQL.query3()
-			queryStats.time_sqlQuery = queriesSQL.computingTime.toMillis
-			queryStats.memory_sqlQuery = queriesSQL.computingMemory.toMBs
+			queryStats.time_sqlQuery = queriesSQL.computingTime
+			queryStats.memory_sqlQuery = queriesSQL.computingMemory
 			if (debug) {
 				println()				
 				println ('''Q3 SQL (ms): «queryStats.time_sqlQuery»''')
@@ -90,24 +60,10 @@ class DriverReferenceMapper {
 			 */
 	        time = System.nanoTime()
 	        memory = peekMemoryUsage()
-	    	val stList = em.createQuery(
-				'''SELECT sr FROM StoreReturns sr 
-				LEFT JOIN FETCH sr.srReturnedDateSk
-				LEFT JOIN FETCH sr.srCustomerSk
-				LEFT JOIN FETCH sr.srStoreSk
-				''', StoreReturns).getResultList()
+	    	val stList = srRepo.findStoreReturnsWithFetch()
 			
-			// PAGINATION NOT WORKING: queries do not work properly, 
-			// probably because we copy the list?
-	//		val stList = em.runSqlQuery(StoreReturns, PAGE_SIZE, 
-	//			'''SELECT sr FROM StoreReturns sr 
-	//			LEFT JOIN FETCH sr.srReturnedDateSk
-	//			LEFT JOIN FETCH sr.srCustomerSk
-	//			LEFT JOIN FETCH sr.srStoreSk
-	//			'''
-	//		) as List<StoreReturns>
-			queryStats.time_fetching = since(time).toMillis
-			queryStats.memory_fetching = memorySince(memory).toMBs
+			queryStats.time_fetching = since(time)
+			queryStats.memory_fetching = memorySince(memory)
 			if (debug) {
 				println()			
 				println('''Q1 ORM fetching time (ms): «queryStats.time_fetching»''')
@@ -125,8 +81,8 @@ class DriverReferenceMapper {
 			memory = peekMemoryUsage()
 			var trafo = new ReferenceTrafo()
 			var outputList = trafo.trafo(stList)
-	    	queryStats.time_referenceMapper = since(time).toMillis
-	    	queryStats.memory_referenceMapper = memorySince(memory).toMBs
+	    	queryStats.time_referenceMapper = since(time)
+	    	queryStats.memory_referenceMapper = memorySince(memory)
 	    	queryStats.size_mapper = trafo.objectCount
 			if (debug) {
 				println()					
@@ -143,33 +99,21 @@ class DriverReferenceMapper {
 			 */
 			 
 			// objects have been full loaded, the DAO resolver is only needed for syncing
-			emfQueries = new TCPDSQueries_emf()
 	    	if (check_correctness) {
-				emfQueries.DEBUG = this.debug
-	    		customerEmfList = emfQueries.query3(outputList, sqlCustomerIdList) // checks for correctness
-		    	queryStats.correct_referenceMapper = emfQueries.correct
+				queriesEMF.DEBUG = this.DEBUG
+	    		customerEmfList = queriesEMF.query3(outputList, sqlCustomerIdList) // checks for correctness
+		    	queryStats.correct_referenceMapper = queriesEMF.correct
 	    	} else {
-	    		customerEmfList = emfQueries.query3(outputList)
+	    		customerEmfList = queriesEMF.query3(outputList)
 	    	}
 	    	if (debug) { 
 				println()		    		
-				println('''Q3 EMF for objects mapped with REFERENCE TRAFO (ms): «emfQueries.computingTime.toMillis»''')
+				println('''Q3 EMF for objects mapped with REFERENCE TRAFO (ms): «queriesEMF.computingTime»''')
 				println ('''Q3 EMF for objects mapped with REFERENCE TRAFO result set size: «customerEmfList.toSet.size()»''')
-				println ('''Q3 EMF for objects mapped with REFERENCE TRAFO result correcT?: «emfQueries.correct»''')
+				println ('''Q3 EMF for objects mapped with REFERENCE TRAFO result correcT?: «queriesEMF.correct»''')
 			}
 				
-			
-	
-	
 			queryStatsList.add(queryStats)
 		}
-
-
-
     }
-    
-    
-    
-    
-    
 }

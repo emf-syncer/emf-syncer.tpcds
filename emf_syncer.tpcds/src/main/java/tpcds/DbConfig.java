@@ -14,7 +14,7 @@ public class DbConfig {
 	@Value("${dbConfig.password}")
 	private String PASSWORD; 
 	@Value("${dbConfig.name}")
-	private String FACTOR; 
+	private String DB_NAME; 
 	
 	@Value("${dbConfig.host}")
 	private String HOST;
@@ -23,13 +23,10 @@ public class DbConfig {
 				
     @Bean
     public DriverManagerDataSource dataSource() {
-    	System.out.println("dbConfig: factor = " + FACTOR);
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("org.mariadb.jdbc.MariaDbDataSource");
-        if (FACTOR.equals("01"))
-        	ds.setUrl("jdbc:mysql://" + HOST + ":" + PORT + "/tpcds");
-        else
-        	ds.setUrl("jdbc:mysql://" + HOST + ":" + PORT + "/tpcds_" + FACTOR );
+        ds.setDriverClassName("org.mariadb.jdbc.Driver");
+        String connectionString = "jdbc:mariadb://" + HOST + ":" + PORT + "/TPCDS_" + DB_NAME;
+       	ds.setUrl(connectionString);
         ds.setUsername(USERNAME);
         ds.setPassword(PASSWORD);
         return ds;
